@@ -4,13 +4,12 @@ const axios = require("axios");
 
 router.get("/characters", async (req, res) => {
   try {
-    const limit = req.query.limit || 100; // logical OR operator renverra true
+    const name = req.query.name || {};
+    const limit = req.query.limit || 100;
     const skip = req.query.skip;
-    // console.log(limit);
-    // console.log(skip);
 
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/characters?limit=${limit}&skip=${skip}&apiKey=${process.env.API_KEY}`
+      `https://lereacteur-marvel-api.herokuapp.com/characters?name=${name}&limit=${limit}&skip=${skip}&apiKey=${process.env.API_KEY}`
     );
     // console.log(response.data);
     res.json(response.data);
@@ -25,7 +24,7 @@ router.get("/character/:characterId", async (req, res) => {
     const characterId = req.params.characterId;
 
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/characters/${characterId}?apiKey=${process.env.API_KEY}`
+      `https://lereacteur-marvel-api.herokuapp.com/character/${characterId}?apiKey=${process.env.API_KEY}`
     );
     res.json(response.data);
   } catch (error) {
