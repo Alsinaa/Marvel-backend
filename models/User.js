@@ -14,4 +14,4 @@ const User = mongoose.model("User", {
   hash: String,
 });
 
-module.exports = router;
+module.exports = User;

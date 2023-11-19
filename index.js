@@ -11,8 +11,10 @@ app.use(express.json());
 // IMPORT ROUTES
 const comicsRoute = require("./routes/comics");
 const charactersRoute = require("./routes/characters");
+const userRoute = require("./routes/user");
 app.use(comicsRoute);
 app.use(charactersRoute);
+app.use(userRoute);
 
 app.get("/", (req, res) => {
   console.log("ma route marvel/");
